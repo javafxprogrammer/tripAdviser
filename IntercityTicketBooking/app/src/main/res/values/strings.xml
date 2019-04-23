@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">InterCity</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="phone">Phone</string>
+    <string name="randomText">Lorem ipsum dolor sit amet, quem soluta nam cu. Oblique electram consectetuer mea ad. Noster alienum torquatos ut qui, at pri perfecto theophrastus, no lorem essent his. In scaevola contentiones nec, eos eu ornatus percipit aliquando.</string>
+    <string name="powertoolsdetails">Power Tools has a number of super luxury coaches which travel from Lusaka to the Copperbelt, Nakonde, Mpulungu and Luwingu. These coaches have plasma TVs and reclining seats - great for long distance travel comfort. Refreshments are available on board. This coach service has experienced drivers and a well trained bus crew.</string>
+    <string name="companyBusDescription">Wi-Fi, power outlets, restrooms, air conditioning, reclinable seats</string>
+    <string name="companyname">Company Name</string>
+    <string name="editCompany">EDIT COMPANY</string>
+    <string name="submit">Submit</string>
+    <string name="website">Website</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
+    <string name="add">Add Shedule</string>
+    <string name="intercity">Intercity</string>
+    <string name="signUp">Sign Up</string>
+    <string name="or">or</string>
+    <string name="already_have_an_account_log_in">Already have an account? Log In</string>
+    <string name="log_in">Log in</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign up</string>
+</resources>

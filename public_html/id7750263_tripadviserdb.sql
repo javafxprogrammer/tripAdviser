@@ -1,0 +1,1021 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.7
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Nov 07, 2018 at 10:01 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.0.26
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `id7750263_tripadviserdb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `userID` int(16) DEFAULT NULL,
+  `seatNumber` int(3) NOT NULL,
+  `date_` date NOT NULL,
+  `dayOfWeek` varchar(16) NOT NULL,
+  `time_` time NOT NULL,
+  `from_` varchar(32) NOT NULL,
+  `to_` varchar(32) NOT NULL,
+  `busID` int(16) NOT NULL,
+  `notificationStatus` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`userID`, `seatNumber`, `date_`, `dayOfWeek`, `time_`, `from_`, `to_`, `busID`, `notificationStatus`) VALUES
+(7, 1, '2018-06-22', 'Friday', '03:15:00', 'lundazi', 'sanfya', 8, 0),
+(7, 1, '2018-07-11', 'Wednesday', '12:00:00', 'from4', 'to4', 8, 0),
+(7, 1, '2018-07-13', 'Friday', '03:15:00', 'lundazi', 'sanfya', 8, 1),
+(7, 1, '2018-07-20', 'Friday', '03:15:00', 'lundazi', 'sanfya', 8, 0),
+(51, 1, '2018-11-05', 'Monday', '14:00:00', 'lusaka', 'kabwe', 3, 1),
+(51, 1, '2018-11-09', 'Friday', '03:15:00', 'lundazi', 'sanfya', 8, 0),
+(51, 2, '2018-11-05', 'Monday', '14:00:00', 'lusaka', 'kabwe', 3, 1),
+(51, 2, '2018-11-09', 'Friday', '03:15:00', 'lundazi', 'sanfya', 8, 0),
+(51, 3, '2018-11-05', 'Monday', '14:00:00', 'lusaka', 'kabwe', 3, 1),
+(51, 3, '2018-11-09', 'Friday', '03:15:00', 'lundazi', 'sanfya', 8, 0),
+(51, 4, '2018-11-05', 'Monday', '14:00:00', 'lusaka', 'kabwe', 3, 1),
+(7, 8, '2018-07-16', 'Monday', '14:00:00', 'lusaka', 'kabwe', 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bus`
+--
+
+CREATE TABLE `bus` (
+  `busID` int(16) NOT NULL,
+  `name` varchar(32) DEFAULT NULL,
+  `description` varchar(512) DEFAULT NULL,
+  `seats` int(3) DEFAULT NULL,
+  `companyID` int(16) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bus`
+--
+
+INSERT INTO `bus` (`busID`, `name`, `description`, `seats`, `companyID`) VALUES
+(3, '2011 MCI J4500', 'Wi-Fi, power outlets, restrooms, air conditioning, reclinable seats.', 66, 3),
+(7, 'newName', 'newDesc', 69, 2),
+(8, 'Toyota 2003', 'My project proposal has been aproaved, so i can start working on the project.Distance Matrix API dreamcloud', 56, 2),
+(11, 'newbus', 'goodbus', 65, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `company`
+--
+
+CREATE TABLE `company` (
+  `companyID` int(16) NOT NULL,
+  `image` varchar(512) DEFAULT NULL,
+  `name` varchar(32) NOT NULL,
+  `details` varchar(512) NOT NULL,
+  `phone` varchar(32) NOT NULL,
+  `email` varchar(32) NOT NULL,
+  `website` varchar(32) DEFAULT NULL,
+  `rating` decimal(3,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`companyID`, `image`, `name`, `details`, `phone`, `email`, `website`, `rating`) VALUES
+(2, 'ENTER YOUR SERVER IP ADDRESS | DOMAIN NAME/uploads/bus1.jpg', 'Electro Tools Coach Services', 'Power Tools has a number of super luxury coaches which travel from Lusaka to the Copperbelt, Nakonde, Mpulungu and Luwingu. These coaches have plasma TVs and reclining seats - great for long distance travel comfort. Refreshments are available on board. This coach service has experienced drivers and a well trained bus crew.', '0954487712', 'powertools.gmail.com', 'www.powertools.com', NULL),
+(3, 'ENTER YOUR SERVER IP ADDRESS | DOMAIN NAME/uploads/bus2.jpg', 'Transit Bus Services', 'Shalom Bus Services is one of the best parcel and courier service providers in Zambia. The company lets you send and receive parcels to/from Lusaka, Livingstone, Sesheke, Mongu, Nakonde and Johannesburg. Rates are affordable and based on the scheduled route that the bus uses to get from origin to destination.', '097791115', 'shalom@gmail.com', 'www.Shalom.com', NULL),
+(6, 'ENTER YOUR SERVER IP ADDRESS | DOMAIN NAME/uploads/bus3.jpg', 'Generic Bus Services', '5b02922a548df0.05972070No intro and conlusionNo intro and conlusionNo intro and conlusion', '988352698', 'generic@gmail.com', 'www.generic.com', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `promotion`
+--
+
+CREATE TABLE `promotion` (
+  `companyID` int(16) NOT NULL,
+  `details` varchar(512) NOT NULL,
+  `ticketCountForDiscout` int(8) NOT NULL,
+  `discount` decimal(5,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `promotion`
+--
+
+INSERT INTO `promotion` (`companyID`, `details`, `ticketCountForDiscout`, `discount`) VALUES
+(2, 'rer', 8, 80.00),
+(3, 'After buying 15 tickets and you get one for free to any place of your choosing', 15, 100.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `review`
+--
+
+CREATE TABLE `review` (
+  `reviewID` int(16) NOT NULL,
+  `companyID` int(16) DEFAULT NULL,
+  `userID` int(16) DEFAULT NULL,
+  `details` varchar(512) NOT NULL,
+  `stars` decimal(3,2) DEFAULT NULL,
+  `date_` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`reviewID`, `companyID`, `userID`, `details`, `stars`, `date_`) VALUES
+(15, 2, 66, '5b02922a4c5fd4.285063865b02922a4c5fd4.285063865b02922a4c5fd4.285063865b02922a4c5fd4.28506386', 2.50, '2018-09-08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timeTable`
+--
+
+CREATE TABLE `timeTable` (
+  `dayOfWeek` varchar(16) NOT NULL,
+  `time_` time NOT NULL,
+  `from_` varchar(32) NOT NULL,
+  `to_` varchar(32) NOT NULL,
+  `busID` int(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `timeTable`
+--
+
+INSERT INTO `timeTable` (`dayOfWeek`, `time_`, `from_`, `to_`, `busID`) VALUES
+('Friday', '03:15:00', 'lundazi', 'sanfya', 8),
+('Monday', '08:41:00', 'Ndola', 'Mansa', 8),
+('Monday', '14:00:00', 'lusaka', 'kabwe', 3),
+('Saturday', '05:00:00', 'Mazabuka', 'Lusaka', 8),
+('Wednesday', '12:00:00', 'from4', 'to4', 8),
+('Wednesday', '12:00:00', 'Kapiri Mposhi', 'Kitwe', 11);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trip`
+--
+
+CREATE TABLE `trip` (
+  `from_` varchar(32) NOT NULL,
+  `to_` varchar(32) NOT NULL,
+  `busID` int(16) NOT NULL,
+  `amount` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `trip`
+--
+
+INSERT INTO `trip` (`from_`, `to_`, `busID`, `amount`) VALUES
+('from4', 'to4', 8, '44'),
+('Kapiri Mposhi', 'Kitwe', 11, '60'),
+('lundazi', 'sanfya', 8, '22'),
+('lusaka', 'kabwe', 3, '40'),
+('Mazabuka', 'Lusaka', 8, '99'),
+('Ndola', 'Mansa', 8, '58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uniqueIdentifier`
+--
+
+CREATE TABLE `uniqueIdentifier` (
+  `id` int(8) NOT NULL,
+  `uniqueID` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `uniqueIdentifier`
+--
+
+INSERT INTO `uniqueIdentifier` (`id`, `uniqueID`) VALUES
+(2, '5b02077581df56.37372771'),
+(4, '5b020775ce1aa4.98250784'),
+(6, '5b02077600eae0.48036539'),
+(7, '5b0207760c38b8.34651267'),
+(9, '5b02077620a446.22402006'),
+(10, '5b0207762ba087.08621000'),
+(11, '5b02922947a457.14995580'),
+(12, '5b0292295be0f0.03029639'),
+(15, '5b029229a80b44.28446701'),
+(26, '5b02922a1b5904.48691376'),
+(28, '5b02922a2bb353.21468891'),
+(34, '5b02922a5cb1c3.70025751'),
+(35, '5b02922a64e602.99654369'),
+(36, '5b02922a6fc145.43545293'),
+(37, '5b02922a77edd0.61273710'),
+(38, '5b02922a82d3b0.75506380'),
+(39, '5b02922a8db7b5.84648022'),
+(40, '5b02922a989217.61069550'),
+(41, '5b02922aa376a3.43698968'),
+(42, '5b02922aae5c10.12097674'),
+(43, '5b02922ab93a27.32040874'),
+(44, '5b02922ac421f6.29639523'),
+(45, '5b02922acefa86.23008118'),
+(46, '5b02922ad9e025.49962757'),
+(47, '5b02922ae4bf92.58746293'),
+(48, '5b02922aefa5e0.35871953'),
+(49, '5b02922b066647.82329905'),
+(50, '5b02922b114910.46932307'),
+(51, '5b02922b1c25c2.29956949'),
+(52, '5b02922b2709d7.61892364'),
+(53, '5b02922b31f023.30253355'),
+(54, '5b02922b3ccc97.46721487'),
+(55, '5b02922b47b151.51050536'),
+(56, '5b02922b529216.21323154'),
+(57, '5b02922b5d7698.51472502'),
+(58, '5b02922b715853.51251315'),
+(59, '5b02922b7b7094.68818945'),
+(60, '5b02922b865257.96935344'),
+(61, '5b02922b94b861.28982726'),
+(62, '5b02922b9ee0e1.15613389'),
+(63, '5b02922ba9c328.58461366'),
+(64, '5b02922bb4a8b1.02502199'),
+(65, '5b02922bbf8553.47176994'),
+(66, '5b02922bca6a46.29491844'),
+(67, '5b02922bd54ea3.77063426'),
+(68, '5b02922be02d43.60536967'),
+(69, '5b02922beb1cc9.78278947'),
+(70, '5b02922c01e055.65600440'),
+(71, '5b02922c0cbd52.08753855'),
+(72, '5b02922c179cb9.43152892'),
+(73, '5b02922c2281b3.78528577'),
+(74, '5b02922c2d6919.55008237'),
+(75, '5b02922c384da9.30086858'),
+(76, '5b02922c432a99.55852411'),
+(77, '5b02922c4e0b24.05364827'),
+(78, '5b02922c58ecb6.24741927'),
+(79, '5b02922c63d319.27725337'),
+(80, '5b02922c6c6f96.85840643'),
+(81, '5b02922c7752a0.15412166'),
+(82, '5b02922c822f78.62310296'),
+(83, '5b02922c8d1310.53541925'),
+(84, '5b02922c97fb49.77595265'),
+(85, '5b02922ca2d856.34490443'),
+(86, '5b02922cadb5b9.52332945'),
+(87, '5b02922cb89ec6.33036181'),
+(88, '5b02922cc38234.07512077'),
+(89, '5b02922cce62f6.22424578'),
+(90, '5b02922cd94488.90734470'),
+(91, '5b029277204f84.01220640'),
+(92, '5b029277418b43.25121322'),
+(93, '5b0292774cb554.92362542'),
+(94, '5b029277579f75.02152789'),
+(95, '5b029277628227.16529489'),
+(96, '5b0292776d6519.06793520'),
+(97, '5b029277784664.17334287'),
+(98, '5b029277832976.68911504'),
+(99, '5b0292778e1f34.78092025'),
+(100, '5b02927798ecd6.33150152'),
+(101, '5b029277a3d165.24181081'),
+(102, '5b029277aeb194.96933948'),
+(103, '5b029277b99674.50491134'),
+(104, '5b029277cf5892.18206646'),
+(105, '5b029277e520c2.64275428'),
+(106, '5b029277f00ce8.79818802'),
+(107, '5b02927806cc45.40496247'),
+(108, '5b0292780efa21.65548533'),
+(109, '5b029278172280.99132987'),
+(110, '5b0292781f4fb8.97505196'),
+(111, '5b029278277bf1.85351111'),
+(112, '5b0292782fa550.59964574'),
+(113, '5b02927837d043.60017632'),
+(114, '5b0292783ffff9.81675805'),
+(115, '5b029278482836.85804880'),
+(116, '5b029278505216.04044635'),
+(117, '5b029278588534.20254983'),
+(118, '5b02927860af79.70557764'),
+(119, '5b02927868da55.35118189'),
+(120, '5b029278711086.40120297'),
+(121, '5b029278793787.91501425'),
+(122, '5b0292788169b8.64728938'),
+(123, '5b0292788cbb15.77017545'),
+(124, '5b02927897a549.93888160'),
+(125, '5b029278a283d4.44217494'),
+(126, '5b029278ad6092.63723433'),
+(127, '5b029278b845d0.45704871'),
+(128, '5b029278c32856.25840341'),
+(129, '5b029278ce0d47.74611374'),
+(130, '5b029278d8eeb3.53326129'),
+(131, '5b029278e3d191.13549725'),
+(132, '5b029278eeb388.01616154'),
+(133, '5b0292790570d4.95193325'),
+(134, '5b0292791051b6.01493976'),
+(135, '5b0292791b37c7.95764960'),
+(136, '5b029279261ac8.43649745'),
+(137, '5b02927930f871.77242502'),
+(138, '5b0292793bdbe0.16568284'),
+(139, '5b02927946bdd2.60843022'),
+(140, '5b029279519df3.70627549'),
+(141, '5b0292795c7f37.61494343'),
+(142, '5b029279676002.79964422'),
+(143, '5b029279724892.95604247'),
+(144, '5b0292797d2a37.74320738'),
+(145, '5b029279880872.04868505'),
+(146, '5b02927992f112.24967416'),
+(147, '5b0292799dcd83.95378932'),
+(148, '5b029279a8ade3.33076140'),
+(149, '5b029279b393c7.84860663'),
+(150, '5b029279be6ee1.56928809'),
+(151, '5b029279c95513.72391099'),
+(152, '5b029279d43e25.28123124'),
+(153, '5b029279df1db8.46172688'),
+(154, '5b029279ea0125.42365906'),
+(155, '5b02927a00c037.79322680'),
+(156, '5b02927a0b9b80.45508681'),
+(157, '5b02927a16e1b9.63688282'),
+(158, '5b02927a216357.13253290'),
+(159, '5b02927a2c4835.18926149'),
+(160, '5b02927a3727c1.34886058'),
+(161, '5b02927a421618.45579885'),
+(162, '5b02927a4cea61.60525802'),
+(163, '5b02927a57cf37.32200217'),
+(164, '5b02927a62b015.59337714'),
+(165, '5b02927a6d8f53.74754637'),
+(166, '5b02927a787747.13040044'),
+(167, '5b02927a8dc6f9.16404296'),
+(168, '5b02927a991846.97419455'),
+(169, '5b02927aa3f709.11352372'),
+(170, '5b02927aaedf13.69032160'),
+(171, '5b02927ab9bc15.10131550'),
+(172, '5b02927ad4f9c6.76697159'),
+(173, '5b02927adfdaf7.64679085'),
+(174, '5b02927aeaf994.87155297'),
+(175, '5b02927b016f43.07577149'),
+(176, '5b02927b0c56b9.31551186'),
+(177, '5b02927b1730f0.07969372'),
+(178, '5b02927b221272.73849511'),
+(179, '5b02927b2cfa41.57079347'),
+(180, '5b02927b37e819.71905949'),
+(181, '5b02927b42c8f3.74081975'),
+(182, '5b02927b4dad64.22710977'),
+(183, '5b02927b55d947.23385662'),
+(184, '5b02927b5e0511.69305806'),
+(185, '5b02927b6636d2.23547166'),
+(186, '5b02927b6e5bc3.78319913'),
+(187, '5b02927b768cb8.26798424'),
+(188, '5b02927b7eb3f8.29603899'),
+(189, '5b02927b86e152.93755095'),
+(190, '5b02927b8f0d50.70888755'),
+(191, '5b02927b9738f7.36556497'),
+(192, '5b02927b9f6213.36083693'),
+(193, '5b02927ba785f6.64817223'),
+(194, '5b02927bafb6d3.21201580'),
+(195, '5b02927bb7e568.65478405'),
+(196, '5b02927bc00c49.43438619'),
+(197, '5b02927bc83557.98539067'),
+(198, '5b02927bd067a9.54438488'),
+(199, '5b02927bde00e9.25325741'),
+(200, '5b02927be8e118.42391794'),
+(201, '5b02946257e1c5.10534726'),
+(202, '5b0294626b7367.16958566'),
+(203, '5b0294628140d5.34061580'),
+(204, '5b0294628c1786.24649186'),
+(205, '5b02946296fa49.52942653'),
+(206, '5b029462a74798.43065523'),
+(207, '5b029462b23157.64400643'),
+(208, '5b029462bd1fd9.65145379'),
+(209, '5b029462c801a2.72084797'),
+(210, '5b029462d2e1a8.67333967'),
+(211, '5b029462ddc6e4.30424955'),
+(212, '5b029462e8a7d5.25421578'),
+(213, '5b029462f38a94.55912087'),
+(214, '5b0294630a4892.44238881'),
+(215, '5b029463152d13.21344056'),
+(216, '5b029463200ed1.92865413'),
+(217, '5b0294632aee33.53278843'),
+(218, '5b02946335d542.02079986'),
+(219, '5b02946340b427.12206317'),
+(220, '5b0294634b9a68.91584207'),
+(221, '5b029463567a18.67130293'),
+(222, '5b0294635f2298.18488472'),
+(223, '5b029463674a17.03707480'),
+(224, '5b0294636f7bb0.93240428'),
+(225, '5b0294638288e1.09688774'),
+(226, '5b02946392dd19.85540525'),
+(227, '5b0294639b0f60.32996939'),
+(228, '5b029463a33620.54861907'),
+(229, '5b029463ab5e07.43052586'),
+(230, '5b029463b38d31.44047003'),
+(231, '5b029463bbbf35.52096624'),
+(232, '5b029463c69602.43143112'),
+(233, '5b029463cec3f4.53844120'),
+(234, '5b029463d6ee68.17282329'),
+(235, '5b029463e1d4f4.27173698'),
+(236, '5b029463ecb5a0.91701635'),
+(237, '5b029464036fd5.58847234'),
+(238, '5b0294640e5ad4.63205680'),
+(239, '5b029464193590.39847447'),
+(240, '5b029464242363.12846646'),
+(241, '5b0294642ef710.72289988'),
+(242, '5b02946439e7f1.27205611'),
+(243, '5b02946444c873.22218215'),
+(244, '5b0294644fa518.84647106'),
+(245, '5b0294645a85b5.84463959'),
+(246, '5b029464656747.66486570'),
+(247, '5b029464704b41.21973794'),
+(248, '5b0294647b37f8.63016224'),
+(249, '5b0294648610d9.97371630'),
+(250, '5b02946490f904.51855302'),
+(251, '5b0294649bd9e9.31878625'),
+(252, '5b029464a6bc86.85153926'),
+(253, '5b029464b19816.70825014'),
+(254, '5b029464bc7682.49768144'),
+(255, '5b029464c75c29.89017576'),
+(256, '5b029464d23e07.00417876'),
+(257, '5b029464dd1db4.35165883'),
+(258, '5b029464e80360.30063271'),
+(259, '5b029464f2e460.95500599'),
+(260, '5b02946509a181.11773602'),
+(261, '5b029465148339.07872851'),
+(262, '5b0294651f6d53.62771215'),
+(263, '5b0294652a4583.58906037'),
+(264, '5b0294653529c2.90643026'),
+(265, '5b029465400cb0.65038889'),
+(266, '5b0294654aeda0.73779744'),
+(267, '5b02946555d437.88297228'),
+(268, '5b02946560b735.20357637'),
+(269, '5b0294656b9835.10807520'),
+(270, '5b029465767a80.11355776'),
+(271, '5b029465816543.91302029'),
+(272, '5b0294658c4360.97108364'),
+(273, '5b029465972275.96902171'),
+(274, '5b029465a20a40.94143651'),
+(275, '5b029465ace9f3.70265188'),
+(276, '5b029465b7c927.82979889'),
+(277, '5b029465cd7ee6.37846871'),
+(278, '5b029465d86d97.71793278'),
+(279, '5b029465e34f21.88109044'),
+(280, '5b029465ee3151.93844137'),
+(281, '5b02946604f321.59192821'),
+(282, '5b0294660fd370.46261474'),
+(283, '5b0294661ac805.96294845'),
+(284, '5b0294662591c1.48086273'),
+(285, '5b0294663089b7.13736140'),
+(286, '5b0294663b59b4.49341442'),
+(287, '5b029466463d96.09990833'),
+(288, '5b029466512161.72865141'),
+(289, '5b0294665c0205.06630990'),
+(290, '5b02946666e742.29273870'),
+(291, '5b02946671c757.88536200'),
+(292, '5b0294667cb4b0.50888584'),
+(293, '5b0294668789a0.80007126'),
+(294, '5b029466926ec4.76467344'),
+(295, '5b0294669d4f89.18752322'),
+(296, '5b029466a83135.21006377'),
+(297, '5b029466b31502.15311481'),
+(298, '5b029466bdf3f7.73336501'),
+(299, '5b029466c8da22.56663586'),
+(300, '5b029466d3b936.58354374'),
+(301, '5b029466de9e58.68006411'),
+(302, '5b029466e98662.97563076'),
+(303, '5b029467004249.70804733'),
+(304, '5b0294670b1e30.28603147'),
+(305, '5b0294671b47c2.86180575'),
+(306, '5b029467470225.53986058'),
+(307, '5b0294674f2d01.34555766'),
+(308, '5b02946757d1b7.35297846'),
+(309, '5b02946762ba27.83088304'),
+(310, '5b0294676d9c57.32138492'),
+(311, '5b02975c5ea5a1.56124756'),
+(312, '5b02975c6b3b46.01604181'),
+(313, '5b02975c761691.20269913'),
+(314, '5b02975c8100b9.51372492'),
+(315, '5b02975c8bdea7.92490702'),
+(316, '5b02975c96bed1.21578035'),
+(317, '5b02975ca1a4a9.30686104'),
+(318, '5b02975cac8478.93688503'),
+(319, '5b02975cb76461.01467568'),
+(320, '5b02975cc246c6.20027360'),
+(321, '5b02975ccd2af5.52114345'),
+(322, '5b02975cdd7894.96434163'),
+(323, '5b02975ce85bb7.19876083'),
+(324, '5b02975cf33e13.59235500'),
+(325, '5b02975d09fc79.67830352'),
+(326, '5b02975d1fb846.57689900'),
+(327, '5b02975d2a9dd6.84773447'),
+(328, '5b02975d358234.12434748'),
+(329, '5b02975d405d41.32028629'),
+(330, '5b02975d4b5372.86045200'),
+(331, '5b02975d60ab96.51187288'),
+(332, '5b02975d6bfbe3.42839189'),
+(333, '5b02975d749890.62275184'),
+(334, '5b02975d7f8258.80878437'),
+(335, '5b02975d8a5f72.97235842'),
+(336, '5b02975d98d043.41320761'),
+(337, '5b02975da592f8.46583220'),
+(338, '5b02975db07870.56104744'),
+(339, '5b02975dbb5569.81851008'),
+(340, '5b02975dc64a27.96943236'),
+(341, '5b02975dce79b6.98830483'),
+(342, '5b02975dd699a5.25822929'),
+(343, '5b02975ddecb09.15274549'),
+(344, '5b02975de6f434.47310983'),
+(345, '5b02975def1ec1.63551361'),
+(346, '5b02975e032521.96310728'),
+(347, '5b02975e0b6065.02608095'),
+(348, '5b02975e1baa53.96114758'),
+(349, '5b02975e2c0e51.54408422'),
+(350, '5b02975e342d37.71591105'),
+(351, '5b02975e3c5c92.24922381'),
+(352, '5b02975e448353.24381253'),
+(353, '5b02975e4cb3b3.60637329'),
+(354, '5b02975e54d846.92641021'),
+(355, '5b02975e5d0b33.74739544'),
+(356, '5b02975e6543d8.99161253'),
+(357, '5b02975e701e55.43043940'),
+(358, '5b02975e7b01a6.42872325'),
+(359, '5b02975e85df09.34248096'),
+(360, '5b02975e90bb08.70965625'),
+(361, '5b02975e9ba863.39379493'),
+(362, '5b02975ea68193.36692286'),
+(363, '5b02975eb16ba0.17259372'),
+(364, '5b02975ebc4ac6.72757905'),
+(365, '5b02975ec72979.77839806'),
+(366, '5b02975ed21026.22361452'),
+(367, '5b02975edcf045.01715003'),
+(368, '5b02975ee7db30.49990517'),
+(369, '5b02975ef2b0c5.11468931'),
+(370, '5b02975f0970c5.31403051'),
+(371, '5b02975f147ed1.44204839'),
+(372, '5b02975f1f38d8.76721585'),
+(373, '5b02975f2a16c4.21333643'),
+(374, '5b02975f34fc21.20562746'),
+(375, '5b02975f3fe146.29491134'),
+(376, '5b02975f4ac368.25222609'),
+(377, '5b02975f55aa17.99005941'),
+(378, '5b02975f6088e9.47709858'),
+(379, '5b02975f6b6bd5.88254847'),
+(380, '5b02975f7648b5.03839738'),
+(381, '5b02975f8131e3.89168599'),
+(382, '5b02975f8c1699.11894206'),
+(383, '5b02975f96f250.69482219'),
+(384, '5b02975fa1d344.63373725'),
+(385, '5b02975facb775.83011439'),
+(386, '5b02975fb79827.75699547'),
+(387, '5b02975fc27722.71113648'),
+(388, '5b02975fcd5f16.78235830'),
+(389, '5b02975fd83b13.11557078'),
+(390, '5b02975fe324b8.05650796'),
+(391, '5b02975fee08a9.42470397'),
+(392, '5b02976004c8e6.08831764'),
+(393, '5b0297600fa922.34145922'),
+(394, '5b0297601a8029.10514967'),
+(395, '5b029760303b93.61334723'),
+(396, '5b0297603b26e8.68832390'),
+(397, '5b029760460be8.21496648'),
+(398, '5b02976050f3f0.67811267'),
+(399, '5b0297605bd6d0.88609648'),
+(400, '5b02976066b8a7.51291219'),
+(401, '5b029760719948.39111864'),
+(402, '5b0297607c7cd6.55328457'),
+(403, '5b0297608762a4.88789157'),
+(404, '5b029760923bd2.31398062'),
+(405, '5b0297609d2074.52948115'),
+(406, '5b029760a7fbf9.07293783'),
+(407, '5b029760b2e5f3.44865472'),
+(408, '5b029760bdc935.83067760'),
+(409, '5b029760c8aa35.14326099'),
+(410, '5b029760d39921.01366770'),
+(411, '5b029760de7902.37054783'),
+(412, '5b029760e95079.21495467'),
+(413, '5b0297610013d0.60839673'),
+(414, '5b0297610af401.60085779'),
+(415, '5b02976115ccf6.01840531'),
+(416, '5b02976120b431.16589570'),
+(417, '5b0297612b9f31.19543209'),
+(418, '5b0297613672e0.44979018'),
+(419, '5b029761415852.05615808'),
+(420, '5b0297614c4148.25189767'),
+(421, '5b0297c7210921.77442833'),
+(422, '5b0297c7300116.37070115'),
+(423, '5b0297c73ae376.12938694'),
+(424, '5b0297c745c154.17588760'),
+(425, '5b0297c750a481.92555160'),
+(426, '5b0297c75b8912.60414905'),
+(427, '5b0297c7666e45.37060302'),
+(428, '5b0297c77149e8.43109905'),
+(429, '5b0297c77c3bb5.55862976'),
+(430, '5b0297c7871716.13762056'),
+(431, '5b0297c791f167.67502992'),
+(432, '5b0297c79cd5f6.94778638'),
+(433, '5b0297c7a7bc07.34962257'),
+(434, '5b0297c7b2a240.03995020'),
+(435, '5b0297c7bd7e64.12433513'),
+(436, '5b0297c7c86583.52361941'),
+(437, '5b0297c7d348f2.47410477'),
+(438, '5b0297c7de2345.94358303'),
+(439, '5b0297c7e91014.37902187'),
+(440, '5b0297c7f3e7a8.65472620'),
+(441, '5b0297c80abb09.21318395'),
+(442, '5b0297c820bb24.14721119'),
+(443, '5b0297c82e1236.47270852'),
+(444, '5b0297c838f0b6.96651778'),
+(445, '5b0297c843d627.23187186'),
+(446, '5b0297c84eb4c2.13576316'),
+(447, '5b0297c85993e3.13604294'),
+(448, '5b0297c8647bc1.39907852'),
+(449, '5b0297c86f5c17.51853387'),
+(450, '5b0297c87a4f33.91047029'),
+(451, '5b0297c8851d53.72060837'),
+(452, '5b0297c89006f2.37601875'),
+(453, '5b0297c89ae9b9.22464346'),
+(454, '5b0297c8a5f310.56040329'),
+(455, '5b0297c8b0a7b8.18634142'),
+(456, '5b0297c8bb8b85.56977705'),
+(457, '5b0297c8c66ff1.19336136'),
+(458, '5b0297c901c345.86473677'),
+(459, '5b0297c90b5cf4.01364392'),
+(460, '5b0297c91633e2.93775389'),
+(461, '5b0297c92114f6.85637637'),
+(462, '5b0297c92bfc57.24676861'),
+(463, '5b0297c936e5d5.66265907'),
+(464, '5b0297c941c503.22377048'),
+(465, '5b0297c94ca359.58874239'),
+(466, '5b0297c9578bc5.15429731'),
+(467, '5b0297c96268b4.73425964'),
+(468, '5b0297c96d5044.04705923'),
+(469, '5b0297c9832343.72409705'),
+(470, '5b0297c998f512.71954703'),
+(471, '5b0297c9a3cb31.47764465'),
+(472, '5b0297c9aeb2e4.76269504'),
+(473, '5b0297c9b98885.13528876'),
+(474, '5b0297c9c46a59.14459052'),
+(475, '5b0297c9cf50b7.38634639'),
+(476, '5b0297c9da38b5.94317243'),
+(477, '5b0297c9e512f0.90247929'),
+(478, '5b0297c9effb28.77957834'),
+(479, '5b0297ca06bd06.77205278'),
+(480, '5b0297ca11a598.71602153'),
+(481, '5b0297ca1c8087.82645765'),
+(482, '5b0297ca276881.08618584'),
+(483, '5b0297ca324c10.74540536'),
+(484, '5b0297ca3a79f5.70438907'),
+(485, '5b0297ca42a282.99207105'),
+(486, '5b0297ca4accb7.29369499'),
+(487, '5b0297ca661703.08341139'),
+(488, '5b0297ca86c730.72614551'),
+(489, '5b0297ca99c830.29021941'),
+(490, '5b0297caa1e4c7.01243327'),
+(491, '5b0297caaa0eb4.50022943'),
+(492, '5b0297cabd2652.24714621'),
+(493, '5b0297cac55107.14658305'),
+(494, '5b0297cacd7f71.20764229'),
+(495, '5b0297cad860d1.43244659'),
+(496, '5b0297cae34726.97708571'),
+(497, '5b0297caebdf16.16798366'),
+(498, '5b0297cb02a634.94660230'),
+(499, '5b0297cb0d8808.48586510'),
+(500, '5b0297cb186b23.35726229'),
+(501, '5b0297cb234371.31376203'),
+(502, '5b0297cb397bf6.65507140'),
+(503, '5b0297cb43ebf7.46524745'),
+(504, '5b0297cb4ec776.04315424'),
+(505, '5b0297cb5f6fe3.18782120'),
+(506, '5b0297cb77d983.10865182'),
+(507, '5b0297cb8aa082.24447409'),
+(508, '5b0297cb9589d1.94310005'),
+(509, '5b0297cba06245.72893690'),
+(510, '5b0297cbab45f3.04161877'),
+(511, '5b0297cbb62802.72876812'),
+(512, '5b0297cbc10cf1.55664654'),
+(513, '5b0297cbcbee08.14834253'),
+(514, '5b0297cbd6d125.51531027'),
+(515, '5b0297cbe1b212.02981021'),
+(516, '5b0297cbec96f0.48986811'),
+(517, '5b0297cc035450.95531724'),
+(518, '5b0297cc0e3043.43609695'),
+(519, '5b0297cc191eb9.55746256'),
+(520, '5b0297cc23f947.30250870'),
+(521, '5b0297cc39c9f6.15095356'),
+(522, '5b0297cc44a417.99794953'),
+(523, '5b0297cc4f8281.42023374'),
+(524, '5b0297cc5fe505.06346039'),
+(525, '5b0297cc72ee39.27968417'),
+(526, '5b0297cc7dc688.53663940'),
+(527, '5b0297cc88a531.33670321'),
+(528, '5b0297cc938c53.12333140'),
+(529, '5b0297cc9e6238.14161524'),
+(530, '5b0297cca94b51.34397028'),
+(531, '5b0298957cdf66.73912267'),
+(532, '5b029895892e55.37348194'),
+(533, '5b0298959415f8.96783198'),
+(534, '5b0298959ef150.85990326'),
+(535, '5b029895a9d6a1.56936487'),
+(536, '5b029895b4bf79.37227813'),
+(537, '5b029895c511c5.70815674'),
+(538, '5b029895cfe9d8.21210183'),
+(539, '5b029895dad7c5.23717506'),
+(540, '5b029896574f77.23551276'),
+(541, '5b0298969e80d8.91745004'),
+(542, '5b029896bf4593.54828103'),
+(543, '5b029896d043d2.37304147'),
+(544, '5b029896db1e27.73509993'),
+(545, '5b029896e60a54.79804349'),
+(546, '5b029896f0e8f4.35637584'),
+(547, '5b02989707a911.81115237'),
+(548, '5b029897128ea0.23743740'),
+(549, '5b0298971d6a37.98205448'),
+(550, '5b029897284b72.69262136'),
+(551, '5b0298973328a2.36713591'),
+(552, '5b0298973e0af6.74961743'),
+(553, '5b02989748fe72.56014437'),
+(554, '5b02989753dd82.96353410'),
+(555, '5b0298975c8586.66797373'),
+(556, '5b02989764b121.61803661'),
+(557, '5b0298976cde46.81366522'),
+(558, '5b029897750e58.61439310'),
+(559, '5b0298977d3a44.75745205'),
+(560, '5b0298979b2479.49382286'),
+(561, '5b029897a351f9.13704968'),
+(562, '5b029897ab74c4.93169897'),
+(563, '5b029897b39fd2.85781060'),
+(564, '5b029897bbd898.74694745'),
+(565, '5b029897c41337.63473207'),
+(566, '5b029897d45712.49977565'),
+(567, '5b029897dc8728.53739062'),
+(568, '5b029897e76f82.97428310'),
+(569, '5b029897f24ef2.30554381'),
+(570, '5b029898090b99.15409682'),
+(571, '5b02989813f0c2.42937840'),
+(572, '5b0298981eca50.57309391'),
+(573, '5b02989829ab67.76712067'),
+(574, '5b0298983493e7.69841350'),
+(575, '5b0298983f79e8.78518017'),
+(576, '5b0298984a5465.98341926'),
+(577, '5b029898553857.61541440'),
+(578, '5b029898601d49.48322967'),
+(579, '5b0298986b0407.89596350'),
+(580, '5b02989875e2a9.89670532'),
+(581, '5b02989880c4d9.74770664'),
+(582, '5b0298989eafd2.09264455'),
+(583, '5b029898a98c90.49137124'),
+(584, '5b029898b470a9.60936817'),
+(585, '5b029898bf4d47.26046439'),
+(586, '5b029898ca33d4.41048579'),
+(587, '5b029898d519a4.82919400'),
+(588, '5b029898dff840.69057564'),
+(589, '5b029898eada97.21085711'),
+(590, '5b029899019f71.58409393'),
+(591, '5b0298990c79e3.64321196'),
+(592, '5b0298991768c2.73860821'),
+(593, '5b0298992d2302.43024594'),
+(594, '5b02989942ee05.06876422'),
+(595, '5b0298994dcc71.12657438'),
+(596, '5b02989958ad98.09571998'),
+(597, '5b029899638f88.99135889'),
+(598, '5b0298996e7042.69616925'),
+(599, '5b029899795419.98942720'),
+(600, '5b029899895d44.73154028'),
+(601, '5b029899a50a92.03010878'),
+(602, '5b029899b7e281.43089166'),
+(603, '5b029899c2cf57.21387442'),
+(604, '5b029899cdb0c8.46660841'),
+(605, '5b029899d89024.26367605'),
+(606, '5b029899e36ed1.71413559'),
+(607, '5b029899ee5292.26509289'),
+(608, '5b02989a0f9441.25116960'),
+(609, '5b02989a1acee3.10550289'),
+(610, '5b02989a25ac18.31139083'),
+(611, '5b02989a308c89.49092315'),
+(612, '5b02989a3b7014.34626637'),
+(613, '5b02989a465255.57103380'),
+(614, '5b02989a5134d7.61449783'),
+(615, '5b02989a5c1849.80439597'),
+(616, '5b02989a670025.30185920'),
+(617, '5b02989a71e2a4.59362150'),
+(618, '5b02989a7cbf32.74986316'),
+(619, '5b02989a8c37a7.19751284'),
+(620, '5b02989aa58fa2.53034335'),
+(621, '5b02989ab5df22.48955834'),
+(622, '5b02989ac0c6d7.15267181'),
+(623, '5b02989acbae66.57063897'),
+(624, '5b02989ad68b38.62278891'),
+(625, '5b02989ae16e73.18590294'),
+(627, '5b02989b030e16.89136132'),
+(628, '5b02989b0df025.80972529'),
+(629, '5b02989b18d4e7.34301534'),
+(630, '5b02989b23b413.33653175'),
+(631, '5b02989b2e9629.71951037'),
+(632, '5b02989b36ca55.68819937'),
+(633, '5b02989b3ef0f6.93318420'),
+(635, '5b02989b4fc114.66132014'),
+(636, '5b02989b5a9dc4.55154341'),
+(637, '5b02989b658486.41560205'),
+(638, '5b02989b706112.03901747'),
+(640, '5b02989b862306.90664962');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `userID` int(16) NOT NULL,
+  `userType` varchar(32) NOT NULL,
+  `firstName` varchar(32) NOT NULL,
+  `lastName` varchar(32) NOT NULL,
+  `email` varchar(32) NOT NULL,
+  `phone` varchar(32) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `companyID` int(16) DEFAULT NULL,
+  `profilePicture` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`userID`, `userType`, `firstName`, `lastName`, `email`, `phone`, `password`, `companyID`, `profilePicture`) VALUES
+(7, 'customer', 'tim257', 'cook257', 'tim@gmail.com257', '097756625257', 'pass', NULL, 'ENTER YOUR SERVER IP ADDRESS | DOMAIN NAME/uploads/0977566252575b258dadd9e117.77048917.jpg'),
+(51, 'management', 'Jim', 'Karim', 'jim@gmail.com', '09968557412', '12345', 3, 'ENTER YOUR SERVER IP ADDRESS | DOMAIN NAME/uploads/099685574125b6c7cca14f842.36822503.jpg'),
+(66, 'management', 'Master', 'Shef', 'shef@g.com', '96325236', '12345', 6, 'ENTER YOUR SERVER IP ADDRESS | DOMAIN NAME/uploads/963252365b92fe86e1e7c6.62196346.jpg'),
+(73, 'customer', 'Lengwe', 'Victor', 'Lengwe@gmail.com', '0985362890', '123456', NULL, 'ENTER YOUR SERVER IP ADDRESS | DOMAIN NAME/uploads/09853628905be2b737561531.49917369.jpg');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`seatNumber`,`date_`,`dayOfWeek`,`time_`,`from_`,`to_`,`busID`),
+  ADD KEY `dayOfWeek` (`dayOfWeek`,`time_`,`from_`,`to_`,`busID`),
+  ADD KEY `userID` (`userID`);
+
+--
+-- Indexes for table `bus`
+--
+ALTER TABLE `bus`
+  ADD PRIMARY KEY (`busID`),
+  ADD KEY `companyID` (`companyID`);
+
+--
+-- Indexes for table `company`
+--
+ALTER TABLE `company`
+  ADD PRIMARY KEY (`companyID`),
+  ADD UNIQUE KEY `phone` (`phone`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `promotion`
+--
+ALTER TABLE `promotion`
+  ADD PRIMARY KEY (`companyID`,`details`,`ticketCountForDiscout`,`discount`);
+
+--
+-- Indexes for table `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`reviewID`),
+  ADD KEY `companyID` (`companyID`),
+  ADD KEY `review_ibfk_1` (`userID`);
+
+--
+-- Indexes for table `timeTable`
+--
+ALTER TABLE `timeTable`
+  ADD PRIMARY KEY (`dayOfWeek`,`time_`,`from_`,`to_`,`busID`),
+  ADD KEY `from_` (`from_`,`to_`,`busID`);
+
+--
+-- Indexes for table `trip`
+--
+ALTER TABLE `trip`
+  ADD PRIMARY KEY (`from_`,`to_`,`busID`),
+  ADD KEY `busID` (`busID`);
+
+--
+-- Indexes for table `uniqueIdentifier`
+--
+ALTER TABLE `uniqueIdentifier`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uniqueID` (`uniqueID`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`userID`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `phone` (`phone`),
+  ADD KEY `companyID` (`companyID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `bus`
+--
+ALTER TABLE `bus`
+  MODIFY `busID` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `company`
+--
+ALTER TABLE `company`
+  MODIFY `companyID` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `reviewID` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `uniqueIdentifier`
+--
+ALTER TABLE `uniqueIdentifier`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=641;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `userID` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `booking`
+--
+ALTER TABLE `booking`
+  ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`dayOfWeek`,`time_`,`from_`,`to_`,`busID`) REFERENCES `timeTable` (`dayOfWeek`, `time_`, `from_`, `to_`, `busID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `bus`
+--
+ALTER TABLE `bus`
+  ADD CONSTRAINT `bus_ibfk_1` FOREIGN KEY (`companyID`) REFERENCES `company` (`companyID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `promotion`
+--
+ALTER TABLE `promotion`
+  ADD CONSTRAINT `promotion_ibfk_1` FOREIGN KEY (`companyID`) REFERENCES `company` (`companyID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `review`
+--
+ALTER TABLE `review`
+  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`companyID`) REFERENCES `company` (`companyID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `timeTable`
+--
+ALTER TABLE `timeTable`
+  ADD CONSTRAINT `timeTable_ibfk_1` FOREIGN KEY (`from_`,`to_`,`busID`) REFERENCES `trip` (`from_`, `to_`, `busID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `trip`
+--
+ALTER TABLE `trip`
+  ADD CONSTRAINT `trip_ibfk_1` FOREIGN KEY (`busID`) REFERENCES `bus` (`busID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`companyID`) REFERENCES `company` (`companyID`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

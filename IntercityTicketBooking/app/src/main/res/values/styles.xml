@@ -1,0 +1,52 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorActivityBackground</item>
+        <item name="popupTheme">@style/popupTheme</item>
+
+        <item name="android:windowActivityTransitions">true</item>
+
+        <item name="colorControlNormal">@color/colorGray</item>
+        <item name="colorControlHighlight">@color/colorGray2</item>
+        <item name="colorControlActivated">@color/accent</item>
+
+
+        <!--<item name="android:listPreferredItemHeightSmall">10dp</item>-->
+        <item name="android:listPreferredItemPaddingLeft">0dp</item>
+        <item name="android:listPreferredItemPaddingRight">0dp</item>
+
+    </style>
+
+    <style name="RatingBar" parent="android:style/Widget.Material.RatingBar.Small">
+        ... // Additional customizations</style>
+
+    <style name="raisedButton" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="android:backgroundTint">@color/colorFlatButtonBackground</item>
+        <item name="android:textColor">@color/colorFlatButtonText</item>
+    </style>
+
+    <style name="flatButton" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/colorFlatButtonText</item>
+    </style>
+
+    <style name="popupTheme" parent="Theme.AppCompat.Light">
+        <item name="android:background">@color/pureWhite</item>
+        <item name="android:textColor">@color/darkGray</item>
+    </style>
+
+    <style name="bottomNavigationTheme" parent="Widget.Design.BottomNavigationView">
+        <item name="colorPrimary">@color/pureWhite</item>
+    </style>
+
+    <style name="alertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/accent</item>
+        <item name="background">@color/pureWhite</item>
+    </style>
+
+
+</resources>

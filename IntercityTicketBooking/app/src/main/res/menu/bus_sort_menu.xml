@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Seats"
+        android:id="@+id/ratings">
+        <menu>
+            <item
+                android:title="Most"
+                android:id="@+id/seatsDesc"/>
+            <item
+                android:title="Least"
+                android:id="@+id/seatsAsc"/>
+        </menu>
+    </item>
+</menu>

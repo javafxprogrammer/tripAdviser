@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/road_autumn_trees"
+tools:context="com.lengwemushimba.intercityticketbooking.EditTripTimeTable">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:text="EDIT SCHEDULE"
+            android:layout_marginLeft="15dp"
+            android:textSize="24dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/fromParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/fromChild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="From"
+                    android:inputType="text"
+                    android:drawableRight="@drawable/add_location"
+                    android:drawablePadding="4dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/toParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/toChild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="To"
+                    android:inputType="text"
+                    android:drawableRight="@drawable/add_location"
+                    android:drawablePadding="4dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/amountParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/amountChild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Amount"
+                    android:inputType="numberDecimal" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/weekdayBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="WeekDay"
+                android:textAllCaps="false"
+                android:onClick="pickWeekDay"/>
+
+            <Button
+                android:id="@+id/departureTimeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Departure Time"
+                android:textAllCaps="false"
+                android:onClick="pickTime"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/submit_btn"
+                android:onClick="editShedule"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="@color/pureWhite" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>
+
+</FrameLayout>
+
+
+
+
+
+

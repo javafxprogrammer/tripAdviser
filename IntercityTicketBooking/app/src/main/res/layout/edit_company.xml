@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lengwemushimba.intercityticketbooking.EditCompany"
+    android:background="@drawable/cost" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_gravity="center"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/editCompany"
+                android:textSize="24sp"
+                android:layout_marginBottom="24dp"
+                android:textColor="@color/pureWhite"
+                android:layout_gravity="center_horizontal"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:onClick="setCompanyProfilePicture"
+                android:src="@drawable/add_a_photo" />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/companyNameParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/companyname"
+                android:textColorHint="@color/pureWhite">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/companyNameChild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/pureWhite"
+                    android:inputType="text"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/companyDescriptionParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/pureWhite">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/companyDescriptionChild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description"
+                    android:inputType="textMultiLine"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/companyPhoneParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/pureWhite">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/companyPhoneChild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/phone"
+                    android:inputType="phone"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/companyEmailParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/pureWhite">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/companyEmailChild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/companyWebsiteParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/pureWhite">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/companyWebsiteChild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/website"
+                    android:inputType="textWebEmailAddress"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:onClick="editCompany"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/submit"
+                android:textAllCaps="false"
+                android:textColor="@color/pureWhite"
+                android:background="@drawable/submit_btn"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</FrameLayout>

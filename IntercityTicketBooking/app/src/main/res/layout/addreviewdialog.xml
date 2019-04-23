@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@color/pureWhite"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Review our services?"
+        android:textColor="@color/darkGray"
+        android:textSize="24sp"
+        android:layout_marginBottom="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rate Us"
+            android:textSize="16sp"
+            android:textColor="@color/darkGray"
+            android:gravity="center_vertical"/>
+
+    <RatingBar
+        android:id="@+id/reviewRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:rating="0"
+        android:stepSize=".5"
+        />
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/reviewDetailsParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:hint="Review"
+        android:textColorHint="@color/darkGray"
+
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/reviewDetailsChild"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:inputType="textMultiLine"
+            android:textColor="@color/black"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:layout_marginRight="-16dp">-->
+
+        <!--<android.support.v7.widget.AppCompatButton-->
+            <!--android:id="@+id/cancel"-->
+            <!--style="@style/flatButton"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_marginEnd="97dp"-->
+            <!--android:text="CANCEL"-->
+            <!--android:textSize="14dp" />-->
+
+        <!--<android.support.v7.widget.AppCompatButton-->
+            <!--android:id="@+id/submit"-->
+            <!--style="@style/flatButton"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:text="SUBMIT"-->
+            <!--android:textSize="14dp" />-->
+
+    <!--</RelativeLayout>-->
+
+
+</LinearLayout>

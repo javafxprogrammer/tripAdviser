@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/search"
+        android:orderInCategory="1"
+        android:title="search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/mic"
+        android:icon="@drawable/mic"
+        android:orderInCategory="2"
+        android:title="search_mic"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/sort"
+        android:icon="@drawable/sort"
+        android:orderInCategory="3"
+        android:title="sort"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/more_vert_white"
+        android:title="settings"
+        app:showAsAction="always"
+        android:orderInCategory="4">
+
+    <menu>
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="logout"/>
+        <item
+            android:id="@+id/addCompany"
+            android:icon="@drawable/lock"
+            android:title="company"/>
+    </menu>
+    </item>
+</menu>
